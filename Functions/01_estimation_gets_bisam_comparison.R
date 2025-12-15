@@ -14,7 +14,7 @@ is_slurm <- if (length(run) > 0) TRUE else FALSE
 run_numeric <- if (is_slurm) as.numeric(run) else 1
 
 if(is_slurm) {
-  .libPaths("~/R/x86_64-pc-linux-gnu-library/4.3")
+  .libPaths("~/R_LIBS")
 }
 
 library(stringr)
@@ -25,16 +25,14 @@ library(mombf)
 
 config <- expand.grid(
   sis_prior = c("imom"),
-  gets_lvl = c(0.01, 0.05),
-  rel_effect = c(1, 2, 3, 5, 7, 10),
-  tau = c("auto"),
+  gets_lvl = c(0.05,0.01),
+  rel_effect = c(0.5, 1, 1.5, 2, 5, 10),
+  tau = c(4, "auto"),
   number_reps = 1:100,
-  date = "2025-12-15",
+  date = "2025-12-09_pat_test",
   stringsAsFactors = FALSE
 )
-
 conf <- config[run_numeric,]
-#conf <- config[as.numeric(commandArgs(trailingOnly = TRUE)), ]
 
 # ==============================================================================
 # SIMULATION PARAMETERS
@@ -70,10 +68,8 @@ POS_OUTL <- 0
 
 # Sample random breaks in the first N_STEPS observations
 N_STEPS <- c(1:4)
-#POS_STEP_IN_Z <- sapply(N_STEPS, \(x) sample(1:(Nt - 3) + (x - 1) * (Nt - 3), 1))
-POS_STEP <- c(10, 40, 70, 100, 130, 160, 190, 220, 250, 280)
-POS_STEP_IN_Z <- POS_STEP - 2 * (POS_STEP %/% Nt + 1) - (POS_STEP %/% Nt)
-#POS_STEP <- POS_STEP_IN_Z + 2 * (N_STEPS) + ((N_STEPS) - 1)
+POS_STEP_IN_Z <- sapply(N_STEPS, \(x) sample(1:(Nt - 3) + (x - 1) * (Nt - 3), 1))
+POS_STEP <- POS_STEP_IN_Z + 2 * (N_STEPS) + ((N_STEPS) - 1)
 STEP_MEAN_ABS <- STEP_MEAN_REL * ERROR_SD
 S2_TRUE <- ERROR_SD^2
 
@@ -82,9 +78,9 @@ S2_TRUE <- ERROR_SD^2
 # ==============================================================================
 
 if (is_slurm) {
-  source("./code/contr_sim_breaks_fun.R")
-  source("./code/estimate_bisam_fun.R")
-  source("./code/pip_window_fun.R")
+  source("../code/contr_sim_breaks_fun.R")
+  source("../code/estimate_bisam_fun.R")
+  source("../code/pip_window_fun.R")
 } else {
   source("./Functions/contr_sim_breaks_fun.R")
   source("./Functions/estimate_bisam_fun.R")
@@ -352,7 +348,7 @@ if (is_slurm) {
   folder_path <- sprintf("./results/%s/gets_bisam_comparison_gets-%0.2f_bisam_prior-%s_tau-%s/",
                          conf$date, conf$gets_lvl, conf$sis_prior, conf$tau)
 } else {
-  folder_path <- sprintf("./Simulations/gets_bisam_comparison_gets-%0.2f_bisam_prior-%s_tau-%s/",
+  folder_path <- sprintf("./Simulations/2025-12-09_pat_test/gets_bisam_comparison_gets-%0.2f_bisam_prior-%s_tau-%s/",
                           conf$gets_lvl, conf$sis_prior, conf$tau)
 }
 
