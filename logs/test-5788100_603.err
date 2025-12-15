@@ -1,0 +1,52 @@
+Loading required package: zoo
+
+Attaching package: ‘zoo’
+
+The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+Loading required package: parallel
+Loading required package: mvtnorm
+Loading required package: ncvreg
+Loading required package: mgcv
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:ncvreg’:
+
+    intervals
+
+This is mgcv 1.9-0. For overview type 'help("mgcv-package")'.
+Loading required package: dplyr
+
+Attaching package: ‘dplyr’
+
+The following object is masked from ‘package:matrixStats’:
+
+    count
+
+The following object is masked from ‘package:nlme’:
+
+    collapse
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loaded glmnet 4.1-10
+Loading required package: invgamma
+Warning message:
+In dir.create(folder_path) :
+  cannot create dir './results/2025-12-11_test/gets_bisam_comparison_gets-0.01_bisam_prior-imom_tau-4', reason 'No such file or directory'
+Error in gzfile(file, mode) : cannot open the connection
+Calls: saveRDS -> gzfile
+In addition: Warning message:
+In gzfile(file, mode) :
+  cannot open compressed file './results/2025-12-11_test/gets_bisam_comparison_gets-0.01_bisam_prior-imom_tau-4/breaksize-3.0SD_rep76.RDS', probable reason 'No such file or directory'
+Execution halted

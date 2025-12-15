@@ -1,0 +1,11 @@
+Loading required package: zoo
+
+Attaching package: ‘zoo’
+
+The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+Loading required package: parallel
+Error in library(mombf) : there is no package called ‘mombf’
+Execution halted

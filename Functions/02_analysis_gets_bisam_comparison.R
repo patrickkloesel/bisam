@@ -25,19 +25,25 @@ PLOT_MODE <- "slide"  # Change to "publication" for journal-style plots
 # Load required libraries (only for data manipulation)
 library(dplyr)
 
-date <- "2025-11-19_dense"
+#file_list <- list.files(path = data_path, pattern = "\\.RDS$", full.names = TRUE)
+
+#if(length(file_list) == 0) {
+#  stop("No RDS files found in ", data_path)
+#}
+
+date <- "2025-12-15"
 gets_lvl <- "0.01"
 bisam_prior <- "imom"
-tau <- "1.92072941034706"
+tau <- "auto"
 
 # Set up paths
 if(tau == "") {
-  data_path <- sprintf("./Simulations/%s/gets_bisam_comparison_gets-%s_bisam_prior-%s/", 
+  data_path <- sprintf("./results/%s/gets_bisam_comparison_gets-%s_bisam_prior-%s/", 
                        date, 
                        gets_lvl,
                        bisam_prior)
 } else {
-  data_path <- sprintf("./Simulations/%s/gets_bisam_comparison_gets-%s_bisam_prior-%s_tau-%s/", 
+  data_path <- sprintf("./results/%s/gets_bisam_comparison_gets-%s_bisam_prior-%s_tau-%s/", 
                        date, 
                        gets_lvl,
                        bisam_prior,
