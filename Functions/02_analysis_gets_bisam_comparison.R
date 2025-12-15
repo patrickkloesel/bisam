@@ -25,19 +25,19 @@ PLOT_MODE <- "slide"  # Change to "publication" for journal-style plots
 # Load required libraries (only for data manipulation)
 library(dplyr)
 
-date <- "2025-12-09_pat_test"
-gets_lvl <- "0.05"
+date <- "2025-12-15"
+gets_lvl <- "0.01"
 bisam_prior <- "imom"
 tau <- "4"
 
 # Set up paths
 if(tau == "") {
-  data_path <- sprintf("./Simulations/%s/gets_bisam_comparison_gets-%s_bisam_prior-%s/", 
+  data_path <- sprintf("./results/%s/gets_bisam_comparison_gets-%s_bisam_prior-%s/", 
                        date, 
                        gets_lvl,
                        bisam_prior)
 } else {
-  data_path <- sprintf("./Simulations/%s/gets_bisam_comparison_gets-%s_bisam_prior-%s_tau-%s/", 
+  data_path <- sprintf("./results/%s/gets_bisam_comparison_gets-%s_bisam_prior-%s_tau-%s/", 
                        date, 
                        gets_lvl,
                        bisam_prior,
@@ -259,19 +259,19 @@ add_clean_axes <- function(side = 1:2, at_x = NULL, labels_x = NULL,
 
 # Output file names
 if(tau == "") {
-  multi_panel_file <- sprintf("./Simulations/%s/%s_multi_gets-%s_bisam-%s_tau-%s_%s.pdf", 
+  multi_panel_file <- sprintf("./results/%s/%s_multi_gets-%s_bisam-%s_tau-%s_%s.pdf", 
                               date, 
                               settings$suffix,
                               gets_lvl,
                               bisam_prior, 
                               "auto")
-  precision_recall_file <- sprintf("./Simulations/%s/%s_pr_gets-%s_bisam-%s_tau-%s_%s.pdf", 
+  precision_recall_file <- sprintf("./results/%s/%s_pr_gets-%s_bisam-%s_tau-%s_%s.pdf", 
                                    date, 
                                    settings$suffix,
                                    gets_lvl,
                                    bisam_prior, 
                                    "auto")
-  f1_score_file <- sprintf("./Simulations/%s/%s_f1_gets-%s_bisam-%s_tau-%s_%s.pdf", 
+  f1_score_file <- sprintf("./results/%s/%s_f1_gets-%s_bisam-%s_tau-%s_%s.pdf", 
                            date, 
                            settings$suffix,
                            gets_lvl,
@@ -279,19 +279,19 @@ if(tau == "") {
                            "auto")
   
 } else {
-  multi_panel_file <- sprintf("./Simulations/%s/%s_multi_gets-%s_bisam-%s_tau-%s.pdf", 
+  multi_panel_file <- sprintf("./results/%s/%s_multi_gets-%s_bisam-%s_tau-%s.pdf", 
                               date, 
                               settings$suffix,
                               gets_lvl,
                               bisam_prior, 
                               tau)
-  precision_recall_file <- sprintf("./Simulations/%s/%s_pr_gets-%s_bisam-%s_tau-%s.pdf", 
+  precision_recall_file <- sprintf("./results/%s/%s_pr_gets-%s_bisam-%s_tau-%s.pdf", 
                                    date, 
                                    settings$suffix,
                                    gets_lvl,
                                    bisam_prior, 
                                    tau)
-  f1_score_file <- sprintf("./Simulations/%s/%s_f1_gets-%s_bisam-%s_tau-%s.pdf", 
+  f1_score_file <- sprintf("./results/%s/%s_f1_gets-%s_bisam-%s_tau-%s.pdf", 
                            date, 
                            settings$suffix,
                            gets_lvl,

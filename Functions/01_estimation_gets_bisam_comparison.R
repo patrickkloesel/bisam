@@ -14,7 +14,7 @@ is_slurm <- if (length(run) > 0) TRUE else FALSE
 run_numeric <- if (is_slurm) as.numeric(run) else 1
 
 if(is_slurm) {
-  .libPaths("~/R_LIBS")
+  .libPaths("~/R/x86_64-pc-linux-gnu-library/4.3")
 }
 
 library(stringr)
@@ -29,7 +29,7 @@ config <- expand.grid(
   rel_effect = c(0.5, 1, 1.5, 2, 5, 10),
   tau = c(4, "auto"),
   number_reps = 1:100,
-  date = "2025-12-09_pat_test",
+  date = "2025-12-15",
   stringsAsFactors = FALSE
 )
 conf <- config[run_numeric,]
@@ -78,9 +78,9 @@ S2_TRUE <- ERROR_SD^2
 # ==============================================================================
 
 if (is_slurm) {
-  source("../code/contr_sim_breaks_fun.R")
-  source("../code/estimate_bisam_fun.R")
-  source("../code/pip_window_fun.R")
+  source("./code/contr_sim_breaks_fun.R")
+  source("./code/estimate_bisam_fun.R")
+  source("./code/pip_window_fun.R")
 } else {
   source("./Functions/contr_sim_breaks_fun.R")
   source("./Functions/estimate_bisam_fun.R")
